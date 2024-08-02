@@ -1,0 +1,93 @@
+[2024-08-02T11:55:02.045Z] Extension deactivated
+[2024-08-02T11:55:05.080Z] Extension activated
+[2024-08-02T11:55:05.081Z] Created terminal: BACKEND - UVICORN
+[2024-08-02T11:55:05.081Z] Executed command: cd backend
+[2024-08-02T11:55:05.081Z] Executed command: uvicorn app.main:app --reload
+[2024-08-02T11:55:05.081Z] Created terminal: FRONTEND - NEXT
+[2024-08-02T11:55:05.081Z] Executed command: cd frontend
+[2024-08-02T11:55:05.081Z] Executed command: npm run dev
+[2024-08-02T11:55:05.082Z] Created terminal: HEROKU CLOUD
+[2024-08-02T11:55:05.082Z] Executed command: heroku logs
+[2024-08-02T11:55:05.082Z] Created terminal: GIT
+[2024-08-02T11:55:05.082Z] Executed command: git status
+[2024-08-02T11:55:05.082Z] Created terminal: TEST - Restricted Command
+[2024-08-02T11:55:05.082Z] Executed command: echo 'This is fine'
+[2024-08-02T11:55:05.082Z] Persistent terminals creation completed
+[2024-08-02T12:06:31.808Z] Extension deactivated
+[2024-08-02T12:06:34.824Z] Extension activated
+[2024-08-02T12:06:34.825Z] Created terminal: BACKEND - UVICORN
+[2024-08-02T12:06:34.825Z] Executed command: cd backend
+[2024-08-02T12:06:34.825Z] Executed command: uvicorn app.main:app --reload
+[2024-08-02T12:06:34.826Z] Created terminal: FRONTEND - NEXT
+[2024-08-02T12:06:34.826Z] Executed command: cd frontend
+[2024-08-02T12:06:34.826Z] Executed command: npm run dev
+[2024-08-02T12:06:34.826Z] Executed command: cd testing_warning
+[2024-08-02T12:06:34.826Z] Created terminal: HEROKU CLOUD
+[2024-08-02T12:06:34.826Z] Executed command: heroku logs
+[2024-08-02T12:06:34.826Z] Created terminal: GIT
+[2024-08-02T12:06:34.826Z] Executed command: git status
+[2024-08-02T12:06:34.826Z] Created terminal: TEST - Restricted Command
+[2024-08-02T12:06:34.826Z] Executed command: echo 'This is fine'
+[2024-08-02T12:06:34.826Z] Persistent terminals creation completed
+[2024-08-02T12:11:39.275Z] Extension deactivated
+[2024-08-02T12:11:42.185Z] Extension activated
+[2024-08-02T12:11:42.185Z] Created terminal: BACKEND - UVICORN
+[2024-08-02T12:11:42.185Z] Executed command: cd backend
+[2024-08-02T12:11:42.185Z] Executed command: uvicorn app.main:app --reload
+[2024-08-02T12:11:42.185Z] Created terminal: FRONTEND - NEXT
+[2024-08-02T12:11:42.186Z] Executed command: cd frontend
+[2024-08-02T12:11:42.186Z] Executed command: npm run dev
+[2024-08-02T12:11:42.186Z] Executed command: cd testing_warning
+[2024-08-02T12:11:42.186Z] Created terminal: HEROKU CLOUD
+[2024-08-02T12:11:42.186Z] Executed command: heroku logs
+[2024-08-02T12:11:42.186Z] Created terminal: GIT
+[2024-08-02T12:11:42.186Z] Executed command: git status
+[2024-08-02T12:11:42.186Z] Created terminal: TEST - Restricted Command
+[2024-08-02T12:11:42.186Z] Executed command: echo 'This is fine'
+[2024-08-02T12:11:42.186Z] Persistent terminals creation completed
+[2024-08-02T12:13:16.454Z] Extension deactivated
+[2024-08-02T12:13:19.440Z] Extension activated
+[2024-08-02T12:13:19.441Z] Created terminal: BACKEND - UVICORN
+[2024-08-02T12:13:19.441Z] Executed command: cd backend
+[2024-08-02T12:13:19.441Z] Executed command: uvicorn app.main:app --reload
+[2024-08-02T12:13:19.441Z] Created terminal: FRONTEND - NEXT
+[2024-08-02T12:13:19.441Z] Executed command: cd frontend
+[2024-08-02T12:13:19.441Z] Executed command: npm run dev
+[2024-08-02T12:13:19.441Z] Executed command: cd testing_warning
+[2024-08-02T12:13:19.441Z] Created terminal: HEROKU CLOUD
+[2024-08-02T12:13:19.442Z] Executed command: heroku logs
+[2024-08-02T12:13:19.442Z] Created terminal: GIT
+[2024-08-02T12:13:19.442Z] Executed command: git status
+[2024-08-02T12:13:19.442Z] Created terminal: TEST - Restricted Command
+[2024-08-02T12:13:19.442Z] Executed command: echo 'This is fine'
+[2024-08-02T12:13:19.442Z] Persistent terminals creation completed
+[2024-08-02T12:15:39.058Z] Extension deactivated
+[2024-08-02T12:15:41.997Z] Extension activated
+[2024-08-02T12:15:41.998Z] Created terminal: BACKEND - UVICORN
+[2024-08-02T12:15:41.998Z] Executed command: cd backend
+[2024-08-02T12:15:41.998Z] Executed command: uvicorn app.main:app --reload
+[2024-08-02T12:15:41.999Z] Created terminal: FRONTEND - NEXT
+[2024-08-02T12:15:41.999Z] Executed command: cd frontend
+[2024-08-02T12:15:41.999Z] Executed command: npm run dev
+[2024-08-02T12:15:41.999Z] Created terminal: HEROKU CLOUD
+[2024-08-02T12:15:41.999Z] Executed command: heroku logs
+[2024-08-02T12:15:41.999Z] Created terminal: GIT
+[2024-08-02T12:15:41.999Z] Executed command: git status
+[2024-08-02T12:15:42.000Z] Created terminal: TEST - Restricted Command
+[2024-08-02T12:15:42.000Z] Executed command: echo 'This is fine'
+[2024-08-02T12:15:42.000Z] Persistent terminals creation completed
+[2024-08-02T12:44:55.574Z] Extension deactivated
+[2024-08-02T12:44:58.500Z] Extension activated
+[2024-08-02T12:44:58.500Z] Created terminal: BACKEND - UVICORN
+[2024-08-02T12:44:58.501Z] Executed command: cd backend
+[2024-08-02T12:44:58.501Z] Executed command: uvicorn app.main:app --reload
+[2024-08-02T12:44:58.501Z] Created terminal: FRONTEND - NEXT
+[2024-08-02T12:44:58.501Z] Executed command: cd frontend
+[2024-08-02T12:44:58.502Z] Executed command: npm run dev
+[2024-08-02T12:44:58.502Z] Created terminal: HEROKU CLOUD
+[2024-08-02T12:44:58.502Z] Executed command: heroku logs
+[2024-08-02T12:44:58.502Z] Created terminal: GIT
+[2024-08-02T12:44:58.502Z] Executed command: git status
+[2024-08-02T12:44:58.502Z] Created terminal: TEST - Restricted Command
+[2024-08-02T12:44:58.502Z] Executed command: echo 'This is fine'
+[2024-08-02T12:44:58.502Z] Persistent terminals creation completed

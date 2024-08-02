@@ -1,0 +1,49 @@
+{
+    "persistentTerminals.terminals": [
+        {
+            "name": "BACKEND - UVICORN",
+            "color": "terminal.ansiGreen",
+            "commands": [
+                "cd backend",
+                "uvicorn app.main:app --reload"
+            ]
+        },
+        {
+            "name": "FRONTEND - NEXT",
+            "color": "terminal.ansiBlue",
+            "commands": [
+                "cd frontend",
+                "npm run dev",
+            ]
+        },
+        {
+            "name": "HEROKU CLOUD",
+            "color": "terminal.ansiYellow",
+            "commands": [
+                "heroku logs"
+            ]
+        },
+        {
+            "name": "GIT",
+            "color": "terminal.ansiMagenta",
+            "commands": [
+                "git status"
+            ]
+        },
+        {
+            "name": "TEST - Restricted Command",
+            "color": "terminal.ansiRed",
+            "commands": [
+                "echo 'This is fine'",
+                // "dangerous-custom-script" // Uncomment this and an error will be thrown and terminals will not be created
+            ]
+        }
+    ],
+    "persistentTerminals.userRestrictedCommands": [
+        "dangerous-custom-script",
+        "rm -rf /",
+        "sudo rm -rf /",
+        "rm -rf /*",
+        // "Add whatever you want here to prevent you shooting yourself in the foot"
+    ]
+}
