@@ -64,4 +64,4 @@ This extension restricts potentially dangerous commands by default. You can cust
 
 ## Release Notes
 
-0.0.1
+0.0.2
