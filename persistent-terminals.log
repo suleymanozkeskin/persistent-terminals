@@ -91,3 +91,48 @@
 [2024-08-02T12:44:58.502Z] Created terminal: TEST - Restricted Command
 [2024-08-02T12:44:58.502Z] Executed command: echo 'This is fine'
 [2024-08-02T12:44:58.502Z] Persistent terminals creation completed
+[2024-08-04T08:26:34.014Z] Extension activated
+[2024-08-04T08:26:34.015Z] Created terminal: BACKEND - UVICORN
+[2024-08-04T08:26:34.015Z] Executed command in BACKEND - UVICORN: cd backend
+[2024-08-04T08:26:34.015Z] Executed command in BACKEND - UVICORN: uvicorn app.main:app --reload
+[2024-08-04T08:26:34.015Z] Created terminal: FRONTEND - NEXT
+[2024-08-04T08:26:34.015Z] Executed command in FRONTEND - NEXT: cd frontend
+[2024-08-04T08:26:34.016Z] Executed command in FRONTEND - NEXT: npm run dev
+[2024-08-04T08:26:34.016Z] Created terminal: HEROKU CLOUD
+[2024-08-04T08:26:34.016Z] Executed command in HEROKU CLOUD: heroku logs
+[2024-08-04T08:26:34.016Z] Created terminal: GIT
+[2024-08-04T08:26:34.016Z] Executed command in GIT: git status
+[2024-08-04T08:26:34.016Z] Created terminal: TEST - Restricted Command
+[2024-08-04T08:26:34.016Z] Executed command in TEST - Restricted Command: echo 'This is fine'
+[2024-08-04T08:26:34.016Z] Persistent terminals creation completed
+[2024-08-04T08:26:58.385Z] Extension deactivated
+[2024-08-04T08:27:01.469Z] Extension activated
+[2024-08-04T08:27:01.470Z] Found existing terminal with given terminal name: BACKEND - UVICORN, Skipping creation..
+[2024-08-04T08:27:01.470Z] Executed command in BACKEND - UVICORN: cd backend
+[2024-08-04T08:27:01.470Z] Executed command in BACKEND - UVICORN: uvicorn app.main:app --reload
+[2024-08-04T08:27:01.470Z] Found existing terminal with given terminal name: FRONTEND - NEXT, Skipping creation..
+[2024-08-04T08:27:01.470Z] Executed command in FRONTEND - NEXT: cd frontend
+[2024-08-04T08:27:01.470Z] Executed command in FRONTEND - NEXT: npm run dev
+[2024-08-04T08:27:01.470Z] Found existing terminal with given terminal name: HEROKU CLOUD, Skipping creation..
+[2024-08-04T08:27:01.470Z] Executed command in HEROKU CLOUD: heroku logs
+[2024-08-04T08:27:01.470Z] Found existing terminal with given terminal name: GIT, Skipping creation..
+[2024-08-04T08:27:01.470Z] Executed command in GIT: git status
+[2024-08-04T08:27:01.470Z] Found existing terminal with given terminal name: TEST - Restricted Command, Skipping creation..
+[2024-08-04T08:27:01.470Z] Executed command in TEST - Restricted Command: echo 'This is fine'
+[2024-08-04T08:27:01.470Z] Persistent terminals creation completed
+[2024-08-04T08:27:25.515Z] Extension deactivated
+[2024-08-04T08:27:28.603Z] Extension activated
+[2024-08-04T08:27:28.604Z] Found existing terminal with given terminal name: BACKEND - UVICORN, Skipping creation..
+[2024-08-04T08:27:28.604Z] Executed command in BACKEND - UVICORN: cd backend
+[2024-08-04T08:27:28.604Z] Executed command in BACKEND - UVICORN: uvicorn app.main:app --reload
+[2024-08-04T08:27:28.604Z] Found existing terminal with given terminal name: FRONTEND - NEXT, Skipping creation..
+[2024-08-04T08:27:28.604Z] Executed command in FRONTEND - NEXT: cd frontend
+[2024-08-04T08:27:28.605Z] Executed command in FRONTEND - NEXT: npm run dev
+[2024-08-04T08:27:28.605Z] Found existing terminal with given terminal name: HEROKU CLOUD, Skipping creation..
+[2024-08-04T08:27:28.605Z] Executed command in HEROKU CLOUD: heroku logs
+[2024-08-04T08:27:28.605Z] Found existing terminal with given terminal name: GIT, Skipping creation..
+[2024-08-04T08:27:28.605Z] Executed command in GIT: git status
+[2024-08-04T08:27:28.605Z] Found existing terminal with given terminal name: TEST - Restricted Command, Skipping creation..
+[2024-08-04T08:27:28.605Z] Executed command in TEST - Restricted Command: echo 'This is fine'
+[2024-08-04T08:27:28.605Z] Persistent terminals creation completed
+[2024-08-04T08:27:41.841Z] Extension deactivated
