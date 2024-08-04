@@ -2,8 +2,11 @@
 
 All notable changes to the "persistent-terminals" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
+## [Version 0.0.1]
 
 - Initial release
+
+## [Version 0.0.2]
+
+- This release checks the existing terminals based on their names and creates new terminals if they do not exist.
+- This feature helps to avoid creating duplicate terminals with the same name.
