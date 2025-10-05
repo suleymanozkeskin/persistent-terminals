@@ -8,6 +8,9 @@ interface TerminalConfig {
   commands: string[];
 }
 
+// Track which terminals have had their commands executed
+const executedTerminals = new Set<string>();
+
 const BASE_RESTRICTED_COMMANDS = [
   "rm -rf",
   "sudo",
@@ -15,16 +18,24 @@ const BASE_RESTRICTED_COMMANDS = [
   "chown",
   "mv /",
   "cp -r /",
+  "dd",
+  "mkfs",
+  "kill -9",
+  "pkill",
+  "killall",
+  "reboot",
+  "shutdown",
   "docker run --privileged",
   "docker run -v /:/host",
 ];
 
 const RESTRICTED_COMMAND_PATTERNS = [
-  /^ssh /,
-  /^telnet /,
-  /^ftp /,
-  /^git .*(--force|-f)/,
+  /^ssh\s+/,
+  /^telnet\s+/,
+  /^ftp\s+/,
+  /^git\s+.*(--force|-f)/,
   /eval\s*\(/,
+  /sudo\s+-/,
 ];
 
 function getRestrictedCommands(): string[] {
@@ -35,10 +46,11 @@ function getRestrictedCommands(): string[] {
 }
 
 function isCommandRestricted(command: string): boolean {
+  const trimmedCommand = command.trim();
   const restrictedCommands = getRestrictedCommands();
   return (
-    restrictedCommands.some((restricted) => command.startsWith(restricted)) ||
-    RESTRICTED_COMMAND_PATTERNS.some((pattern) => pattern.test(command))
+    restrictedCommands.some((restricted) => trimmedCommand.startsWith(restricted)) ||
+    RESTRICTED_COMMAND_PATTERNS.some((pattern) => pattern.test(trimmedCommand))
   );
 }
 
@@ -70,13 +82,28 @@ function validateConfig(config: TerminalConfig[]): string[] {
   return errors;
 }
 
-function logAction(message: string) {
-  const logFile = path.join(
-    vscode.workspace.workspaceFolders?.[0].uri.fsPath || "",
-    "persistent-terminals.log"
-  );
+async function logAction(message: string): Promise<void> {
+  const config = vscode.workspace.getConfiguration("persistentTerminals");
+  const loggingEnabled = config.get("enableLogging", false);
+
+  if (!loggingEnabled) {
+    return;
+  }
+
+  const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
+  if (!workspaceFolder) {
+    return; // Skip logging if no workspace folder
+  }
+
+  const logFile = path.join(workspaceFolder.uri.fsPath, "persistent-terminals.log");
   const logMessage = `[${new Date().toISOString()}] ${message}\n`;
-  fs.appendFileSync(logFile, logMessage);
+
+  try {
+    await fs.promises.appendFile(logFile, logMessage);
+  } catch (error) {
+    // Silently fail to avoid disrupting extension functionality
+    console.error("Failed to write to log file:", error);
+  }
 }
 
 export function activate(context: vscode.ExtensionContext) {
@@ -100,51 +127,77 @@ function queryExistingTerminalWithName(
   return vscode.window.terminals.find((terminal) => terminal.name === name);
 }
 
-function createPersistentTerminals() {
-  const config = vscode.workspace.getConfiguration("persistentTerminals");
-  const terminals: TerminalConfig[] = config.get("terminals") || [];
-
-  const configErrors = validateConfig(terminals);
-  if (configErrors.length > 0) {
-    vscode.window.showErrorMessage(
-      "Invalid terminal configuration",
-      ...configErrors
+async function createPersistentTerminals() {
+  if (!vscode.workspace.workspaceFolders) {
+    vscode.window.showWarningMessage(
+      "Persistent Terminals requires an open workspace folder"
     );
-    logAction(`Configuration errors: ${configErrors.join(", ")}`);
     return;
   }
 
-  terminals.forEach((terminalConfig) => {
+  const config = vscode.workspace.getConfiguration("persistentTerminals");
+  const terminals: TerminalConfig[] = config.get("terminals") || [];
+
+  if (terminals.length === 0) {
+    return; // No terminals to create
+  }
+
+  const configErrors = validateConfig(terminals);
+  if (configErrors.length > 0) {
+    const errorMessage = `Invalid terminal configuration:\n${configErrors.join("\n")}`;
+    vscode.window.showErrorMessage(errorMessage);
+    await logAction(`Configuration errors: ${configErrors.join(", ")}`);
+    return;
+  }
+
+  let createdCount = 0;
+  let skippedCount = 0;
+
+  for (const terminalConfig of terminals) {
     let terminal = queryExistingTerminalWithName(terminalConfig.name);
+    const alreadyExecuted = executedTerminals.has(terminalConfig.name);
+
     if (!terminal) {
       terminal = vscode.window.createTerminal({
         name: terminalConfig.name,
         color: new vscode.ThemeColor(terminalConfig.color),
       });
-      logAction(`Created terminal: ${terminalConfig.name}`);
+      createdCount++;
+      await logAction(`Created terminal: ${terminalConfig.name}`);
     } else {
-      logAction(
-        `Found existing terminal with given terminal name: ${terminalConfig.name}, Skipping creation..`
+      skippedCount++;
+      await logAction(
+        `Found existing terminal: ${terminalConfig.name}, skipping creation`
       );
     }
 
-    terminalConfig.commands.forEach((command) => {
-      if (isCommandRestricted(command)) {
-        vscode.window.showWarningMessage(
-          `Skipping restricted command in ${terminalConfig.name}: ${command}`
-        );
-        logAction(`Skipped restricted command: ${command}`);
-      } else {
-        terminal.sendText(command);
-        logAction(`Executed command in ${terminalConfig.name}: ${command}`);
+    // Only execute commands if terminal is new or hasn't been executed yet
+    if (!alreadyExecuted && terminal) {
+      for (const command of terminalConfig.commands) {
+        if (isCommandRestricted(command)) {
+          vscode.window.showWarningMessage(
+            `Skipping restricted command in ${terminalConfig.name}: ${command}`
+          );
+          await logAction(`Skipped restricted command: ${command}`);
+        } else {
+          terminal.sendText(command);
+          await logAction(`Executed command in ${terminalConfig.name}: ${command}`);
+        }
       }
-    });
-  });
+      executedTerminals.add(terminalConfig.name);
+    } else if (alreadyExecuted) {
+      await logAction(
+        `Skipping command execution for ${terminalConfig.name} (already executed)`
+      );
+    }
+  }
 
-  vscode.window.showInformationMessage(
-    "Persistent terminals created successfully!"
-  );
-  logAction("Persistent terminals creation completed");
+  if (createdCount > 0) {
+    vscode.window.showInformationMessage(
+      `Created ${createdCount} terminal(s) successfully!`
+    );
+  }
+  await logAction(`Terminals created: ${createdCount}, skipped: ${skippedCount}`);
 }
 
 export function deactivate() {

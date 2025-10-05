@@ -11,8 +11,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onStartupFinished",
-    "workspaceContains:**/.vscode/settings.json"
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -49,6 +48,11 @@
             "type": "string"
           },
           "description": "Additional user-defined restricted commands"
+        },
+        "persistentTerminals.enableLogging": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable logging to persistent-terminals.log file"
         }
       }
     }
