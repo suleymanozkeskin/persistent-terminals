@@ -1,0 +1,24 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="128" height="128" rx="16" fill="#1E1E1E"/>
+
+  <!-- Terminal Window -->
+  <rect x="16" y="24" width="96" height="80" rx="4" fill="#2D2D30" stroke="#3E3E42" stroke-width="2"/>
+
+  <!-- Terminal Header Dots -->
+  <circle cx="28" cy="36" r="3" fill="#FF5F56"/>
+  <circle cx="40" cy="36" r="3" fill="#FFBD2E"/>
+  <circle cx="52" cy="36" r="3" fill="#27C93F"/>
+
+  <!-- Command Prompt Symbol -->
+  <path d="M 28 52 L 38 60 L 28 68" stroke="#4EC9B0" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Cursor Line -->
+  <rect x="44" y="58" width="24" height="4" rx="2" fill="#4EC9B0"/>
+
+  <!-- Circular Arrow (Persistent Symbol) -->
+  <g transform="translate(78, 72)">
+    <path d="M 0 -12 A 12 12 0 1 1 -10.39 -6" stroke="#569CD6" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M 0 -12 L -4 -8 L 4 -8 Z" fill="#569CD6"/>
+  </g>
+</svg>

@@ -2,8 +2,19 @@
   "name": "persistent-terminals",
   "displayName": "Persistent Terminals",
   "description": "This extension allows you to set terminal configurations once and starts the terminals accordingly when you open or restart the vscode application.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "suleymanozkeskin",
+  "icon": "icon.png",
+  "keywords": [
+    "terminal",
+    "persistent",
+    "automation",
+    "workspace",
+    "terminals",
+    "startup",
+    "commands",
+    "productivity"
+  ],
   "engines": {
     "vscode": "^1.92.0"
   },
@@ -57,6 +68,7 @@
       }
     }
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/suleymanozkeskin/persistent-terminals"

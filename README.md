@@ -1,5 +1,10 @@
 # Persistent Terminals
 
+[![Version](https://img.shields.io/visual-studio-marketplace/v/suleymanozkeskin.persistent-terminals)](https://marketplace.visualstudio.com/items?itemName=suleymanozkeskin.persistent-terminals)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/suleymanozkeskin.persistent-terminals)](https://marketplace.visualstudio.com/items?itemName=suleymanozkeskin.persistent-terminals)
+[![Rating](https://img.shields.io/visual-studio-marketplace/r/suleymanozkeskin.persistent-terminals)](https://marketplace.visualstudio.com/items?itemName=suleymanozkeskin.persistent-terminals)
+[![License](https://img.shields.io/github/license/suleymanozkeskin/persistent-terminals)](https://github.com/suleymanozkeskin/persistent-terminals/blob/master/LICENSE.md)
+
 Persistent Terminals is a VS Code extension that allows you to set up and automatically launch preconfigured terminals when you open your workspace.
 
 ## Features
@@ -44,8 +49,9 @@ Persistent Terminals is a VS Code extension that allows you to set up and automa
 
 This extension contributes the following settings:
 
-- persistentTerminals.terminals: Array of terminal configuration
-- persistentTerminals.restrictedCommands: Array of additional user-defined restricted commands to prevent execution
+- `persistentTerminals.terminals`: Array of terminal configurations
+- `persistentTerminals.userRestrictedCommands`: Array of additional user-defined restricted commands to prevent execution
+- `persistentTerminals.enableLogging`: Enable logging to `persistent-terminals.log` file (default: `false`)
 
 ## Security
 
@@ -58,10 +64,27 @@ This extension restricts potentially dangerous commands by default. You can cust
     ]
 ```
 
+## Logging
+
+To enable logging, add this to your workspace settings:
+
+```json
+"persistentTerminals.enableLogging": true
+```
+
+This will create a `persistent-terminals.log` file in your workspace root (ignored by git by default).
+
 ## Known Issues
 
 - The extension does not support the persistence of commands history across terminal sessions
 
 ## Release Notes
 
-0.0.2
+### 0.0.3
+
+- **Breaking**: Logging is now opt-in (set `enableLogging: true` to enable)
+- Fixed: Commands no longer re-execute on existing terminals when extension reloads
+- Fixed: Log file now ignored by git by default
+- Improved: Better error messages and UX feedback
+- Improved: Stronger command validation and security
+- Improved: Async file operations with proper error handling
